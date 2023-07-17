@@ -1,4 +1,4 @@
-var tds = document.getElementsByTagName('td')
+var tds = document.getElementsByClassName('cell');
 var matriz_hash = [['','',''], ['','',''], ['','','']]
 
 /*
@@ -26,16 +26,19 @@ function add_Move(i, j){
             tds[i*3 + j].appendChild(img)
             jogadorAtual = 'x'
         }
-        var result = check_Winner(matriz_hash)
-        if (result == '' && isFull(matriz_hash)) {
-            window.alert('Empatou')
-            clean_board(matriz_hash)
-        } else if (result == 'x' || result == 'o') {
-            window.alert("O " + result + " ganhou!!")
-            clean_board(matriz_hash)
-        } else {
-            move_Machine()
-        }
+        setTimeout(function () {
+            
+            var result = check_Winner(matriz_hash)
+            if (result == '' && isFull(matriz_hash)) {
+                window.alert('Empatou')
+                clean_board(matriz_hash)
+            } else if (result == 'x' || result == 'o') {
+                window.alert("O " + result + " ganhou!!")
+                clean_board(matriz_hash)
+            } else {
+                move_Machine()
+            }
+        }, 1000);
     }
 }
 
@@ -57,14 +60,18 @@ function move_Machine(){
         jogadorAtual = 'x'
     }
 
-    var result = check_Winner(matriz_hash)
-    if(result == '' && isFull(matriz_hash)){
-        window.alert('Empatou')
-        clean_board(matriz_hash)
-    }else if(result == 'x' || result == 'o'){
-        window.alert("O " + result + " ganhou!!")
-        clean_board(matriz_hash)
-    }
+    setTimeout(function () {
+        var result = check_Winner(matriz_hash)
+        if (result == '' && isFull(matriz_hash)) {
+            window.alert('Empatou')
+            clean_board(matriz_hash)
+        } else if (result == 'x' || result == 'o') {
+            window.alert("O " + result + " ganhou!!")
+            clean_board(matriz_hash)
+        }
+    }, 1000);
+
+    
 }
 
 function clean_board(board){

@@ -1,73 +1,135 @@
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Noto+Sans:wght@400;700&family=Poppins:wght@300;400;500;600&family=Press+Start+2P&display=swap');
+body {
+    background-color: #eee;
+    height: 100vh;
+    overflow: hidden;
+    place-content: center;
 
-
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+    background-image: url('./img/5172658.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
 }
 
-header{
-    height: 5vh;
-    display: flex;
-    justify-content: center;
-    font-size: 20px;
-    color: #f5f5f5;
-    font-family: 'Press Start 2P';
-    background-color: #032973;
-    padding-bottom: 20px;
-    padding-top: 20px;
-}
-
-section{
-    height: 90vh;
-    background-color: #032973;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding-bottom: 20px;
-}
-
-.board{
-    height: 550px;
-    width: 540px;
-    border: solid;
-}
-
-footer{
-    height: 5vh;
-    font-family: "Poppins", sans-serif;
+.container{
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #1462A6;
-    font-size: 20px;
-    color: #f5f5f5;
+    height: 80%;
 }
 
-.even{
-    background-color: rgb(98, 156, 98);
+.board {
+    display: flex;
+    flex-wrap: wrap;
+    width: 606px;
+    background-color: #fff;
+    border: 5px solid rgb(238, 127, 238);
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.5);
 }
 
-.odd{
-    background-color: rgb(235, 235, 162);
-}
-
-
-table{
-    background-color: black;
-    border-collapse: separate; 
-    border-spacing: 5px;
-}
-
-td{
-    border: solid 1px #000;
-    height: 175px;
-    width: 180px;
+.cell {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 200px;
+    height: 200px;
+    font-size: 60px;
+    font-weight: bold;
+    color: #333;
     cursor: pointer;
+    border: 1px solid #333;
 }
 
-img{
-    height: 160px;
-    width: 160px;
+.cell:hover {
+    background-color: #eee;
 }
+
+.cell:after {
+    content: "";
+    display: block;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: 8px solid #333;
+    visibility: hidden;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    box-sizing: content-box;
+    z-index: 1;
+}
+
+.cell.x:after {
+    content: "";
+    transform: rotate(45deg);
+    visibility: visible;
+}
+
+.cell.o:after {
+    content: "";
+    border-color: #fff;
+    visibility: visible;
+}
+
+.row:before,
+.col:before {
+    content: "";
+    display: block;
+    position: absolute;
+    background-color: #333;
+}
+
+.row:before {
+    width: 306px;
+    height: 5px;
+    top: 100px;
+    left: 0;
+}
+
+.col:before {
+    width: 5px;
+    height: 306px;
+    top: 0;
+    left: 100px;
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 0.5rem;
+    background: darkblue;
+    color: white;
+    font-weight: 500;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.2rem;
+  }
+
+  header{
+    display: flex;
+    justify-content: center;
+  }
+
+  h1 {
+    margin: 0;
+    --s: 0.1em;   /* the thickness of the line */
+    --c: rgb(92, 5, 192); /* the color */
+    
+    color: #fff;
+    padding-bottom: var(--s);
+    background: 
+      linear-gradient(90deg,var(--c) 50%,#000 0) calc(100% - var(--_p,0%))/200% 100%,
+      linear-gradient(var(--c) 0 0) 0% 100%/var(--_p,0%) var(--s) no-repeat;
+    -webkit-background-clip: text,padding-box;
+            background-clip: text,padding-box;
+    transition: 0.5s;
+  }
+  h1:hover {--_p: 100%}
+
+  h1 {
+    font-family: system-ui, sans-serif;
+    font-size: 4rem;
+    cursor: pointer;
+  }
